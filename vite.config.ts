@@ -1,8 +1,21 @@
-
-import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { TanStackRouterVite } from '@tanstack/router-plugin/vite';
+import tsConfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
-  vite: {
-    base: "/mySite/",
+  plugins: [
+    TanStackRouterVite(),
+    react(),
+    tsConfigPaths(),
+  ],
+  base: '/mySite/',
+  build: {
+    target: 'es2020',
+    outDir: 'dist',
+    emptyOutDir: true,
+  },
+  server: {
+    port: 5173,
   },
 });

@@ -38,6 +38,11 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Copy public files to dist
+        run: |
+          cp -r public/* dist/ 2>/dev/null || true
+          if [ ! -f dist/.nojekyll ]; then touch dist/.nojekyll; fi
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
