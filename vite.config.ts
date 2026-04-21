@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import { TanStackRouterVite } from '@tanstack/router-plugin/vite';
 import tsConfigPaths from 'vite-tsconfig-paths';
 import tailwindcss from '@tailwindcss/vite';
-//new Commit
+
 export default defineConfig({
   plugins: [
     tailwindcss(),
@@ -11,7 +11,7 @@ export default defineConfig({
     react(),
     tsConfigPaths(),
   ],
-  base: '/',
+  base: '/mySite/',
   build: {
     target: 'es2020',
     outDir: 'dist',
