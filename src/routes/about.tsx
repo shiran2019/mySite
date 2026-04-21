@@ -1,23 +1,41 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
 import { motion } from "framer-motion";
+import { generateMetaTags, getCombinedKeywords, generateBreadcrumbSchema } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About — Shiran Suriyapathiraja" },
-      {
-        name: "description",
-        content:
-          "About Shiran Suriyapathiraja — Software Engineer, IT graduate from the University of Kelaniya, AI researcher.",
-      },
-      { property: "og:title", content: "About — Shiran Suriyapathiraja" },
-      {
-        property: "og:description",
-        content: "Engineer, researcher, and lifelong learner based in Maharagama, Sri Lanka.",
-      },
-    ],
-  }),
+  head: () => {
+    const keywords = getCombinedKeywords(["softwareEngineering", "fintech", "ai", "technologies"]);
+    const breadcrumbs = generateBreadcrumbSchema([
+      { name: "Home", url: "https://shiran.dev" },
+      { name: "About", url: "https://shiran.dev/about" },
+    ]);
+
+    return {
+      meta: [
+        ...generateMetaTags({
+          title:
+            "About Shiran Suriyapathiraja — Software Engineer, Fintech Architect & AI Researcher",
+          description:
+            "Shiran Suriyapathiraja: Full-stack Software Engineer with expertise in fintech systems, banking infrastructure, fraud detection, and Generative AI. IT graduate from University of Kelaniya with 2.5+ years industry experience.",
+          keywords: keywords,
+          ogTitle: "About Shiran Suriyapathiraja — Fintech Engineer & AI Specialist",
+          ogDescription:
+            "Full-stack architect building secure banking systems, AML platforms, and AI-driven financial solutions. Spring Boot, React, Python, Deep Learning.",
+        }),
+      ],
+      links: [
+        { rel: "canonical", href: "https://shiran.dev/about" },
+        { rel: "alternate", hrefLang: "en", href: "https://shiran.dev/about" },
+      ],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(breadcrumbs),
+        },
+      ],
+    };
+  },
   component: AboutPage,
 });
 

@@ -2,6 +2,7 @@ import { Outlet, createRootRoute, HeadContent, Scripts } from "@tanstack/react-r
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Link } from "@tanstack/react-router";
+import { generateMetaTags, generatePersonSchema } from "@/lib/seo";
 
 import appCss from "../styles.css?url";
 
@@ -29,22 +30,47 @@ function NotFoundComponent() {
   );
 }
 
+const personSchema = generatePersonSchema(
+  "Shiran Suriyapathiraja",
+  "Senior Software Engineer | Fintech Specialist | AI Researcher",
+  "Software Engineer with 2.5+ years in fintech and AI. IEEE published author specializing in full-stack development, financial systems, and Generative AI.",
+);
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Shiran Suriyapathiraja — Software Engineer" },
-      {
-        name: "description",
-        content:
-          "Software Engineer specializing in full-stack development, fintech systems and applied AI. Based in Sri Lanka.",
-      },
-      { name: "author", content: "Shiran Suriyapathiraja" },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
+      ...generateMetaTags({
+        title: "Shiran Suriyapathiraja — Software Engineer | Fintech & AI Specialist",
+        description:
+          "Senior Software Engineer with 2.5+ years in fintech systems, full-stack development, and Generative AI. IEEE published researcher. Specializing in banking systems, fraud detection, and scalable architecture.",
+        keywords: [
+          "Software Engineer",
+          "Fintech Developer",
+          "Full-Stack Engineer",
+          "AI Researcher",
+          "Spring Boot",
+          "React",
+          "Banking Systems",
+          "Fraud Detection",
+          "Artificial Intelligence",
+          "IEEE Author",
+          "Shiran Suriyapathiraja",
+        ],
+        ogTitle: "Shiran Suriyapathiraja — Senior Software Engineer & Fintech Specialist",
+        ogDescription:
+          "Full-stack engineer with deep expertise in fintech, AI systems, and scalable architecture. 2.5+ years building production systems for banking and financial services.",
+      }),
     ],
-    links: [{ rel: "stylesheet", href: appCss }],
+    links: [
+      { rel: "stylesheet", href: appCss },
+      { rel: "canonical", href: "https://shiran.dev" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(personSchema),
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,

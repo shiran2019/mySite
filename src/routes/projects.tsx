@@ -2,23 +2,52 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
 import { motion } from "framer-motion";
 import { ArrowUpRight, FileText } from "lucide-react";
+import { generateMetaTags, getCombinedKeywords, generateArticleSchema, generateBreadcrumbSchema } from "@/lib/seo";
 
 export const Route = createFileRoute("/projects")({
-  head: () => ({
-    meta: [
-      { title: "Research & Projects — Shiran Suriyapathiraja" },
-      {
-        name: "description",
-        content:
-          "IEEE-published research on Generative AI car damage detection and deep-learning emotion recognition by Shiran Suriyapathiraja.",
-      },
-      { property: "og:title", content: "Research & Projects — Shiran Suriyapathiraja" },
-      {
-        property: "og:description",
-        content: "Two IEEE conference publications and selected engineering projects.",
-      },
-    ],
-  }),
+  head: () => {
+    const keywords = getCombinedKeywords(["softwareEngineering", "ai", "fintech"]);
+    const additionalKeywords = [
+      "IEEE Publications",
+      "Generative AI",
+      "Computer Vision",
+      "Deep Learning",
+      "Car Damage Detection",
+      "Emotion Detection",
+      "Neural Networks",
+      "Research",
+    ];
+    const breadcrumbs = generateBreadcrumbSchema([
+      { name: "Home", url: "https://shiran.dev" },
+      { name: "Projects & Research", url: "https://shiran.dev/projects" },
+    ]);
+
+    return {
+      meta: [
+        ...generateMetaTags({
+          title:
+            "Research & Projects — Shiran Suriyapathiraja | IEEE Author & AI Researcher",
+          description:
+            "IEEE-published research on Generative AI car damage detection and deep learning emotion recognition. Technical projects in fintech, banking systems, and AI-driven solutions by Shiran Suriyapathiraja.",
+          keywords: [...keywords, ...additionalKeywords],
+          ogTitle:
+            "Research & Engineering Projects — Generative AI & Computer Vision",
+          ogDescription:
+            "2 IEEE conference publications on Generative AI and Deep Learning. Featured projects: AML Platform, Chat-Based LOS, Customer Onboarding, OCR Systems.",
+        }),
+      ],
+      links: [
+        { rel: "canonical", href: "https://shiran.dev/projects" },
+        { rel: "alternate", hrefLang: "en", href: "https://shiran.dev/projects" },
+      ],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(breadcrumbs),
+        },
+      ],
+    };
+  },
   component: ProjectsPage,
 });
 

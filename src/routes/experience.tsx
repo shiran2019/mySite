@@ -1,23 +1,51 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
 import { motion } from "framer-motion";
+import { generateMetaTags, getCombinedKeywords, generateBreadcrumbSchema } from "@/lib/seo";
 
 export const Route = createFileRoute("/experience")({
-  head: () => ({
-    meta: [
-      { title: "Experience — Shiran Suriyapathiraja" },
-      {
-        name: "description",
-        content:
-          "Professional journey of Shiran Suriyapathiraja across ZData Innovations and mobiOs — from intern to Software Engineer.",
-      },
-      { property: "og:title", content: "Experience — Shiran Suriyapathiraja" },
-      {
-        property: "og:description",
-        content: "From intern to engineer leading fintech projects across 36+ active branches.",
-      },
-    ],
-  }),
+  head: () => {
+    const keywords = getCombinedKeywords(["softwareEngineering", "fintech", "technologies"]);
+    const additionalKeywords = [
+      "Banking Systems",
+      "Fintech Engineer",
+      "Anti-Money Laundering",
+      "Fraud Detection",
+      "Loan Origination System",
+      "Customer Onboarding",
+      "Payment Systems",
+    ];
+    const breadcrumbs = generateBreadcrumbSchema([
+      { name: "Home", url: "https://shiran.dev" },
+      { name: "Experience", url: "https://shiran.dev/experience" },
+    ]);
+
+    return {
+      meta: [
+        ...generateMetaTags({
+          title:
+            "Experience — Shiran Suriyapathiraja | Fintech Engineer & Software Architect",
+          description:
+            "Professional experience of Shiran Suriyapathiraja at ZData Innovations and mobiOs. Led fintech projects including AML systems, fraud detection, and banking infrastructure across 36+ production branches.",
+          keywords: [...keywords, ...additionalKeywords],
+          ogTitle:
+            "Professional Experience — Fintech Systems Architect & Senior Software Engineer",
+          ogDescription:
+            "From Junior Engineer to Senior Software Engineer: 2.5+ years building scalable fintech platforms, AML systems, and banking infrastructure. 36+ active production branches.",
+        }),
+      ],
+      links: [
+        { rel: "canonical", href: "https://shiran.dev/experience" },
+        { rel: "alternate", hrefLang: "en", href: "https://shiran.dev/experience" },
+      ],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(breadcrumbs),
+        },
+      ],
+    };
+  },
   component: ExperiencePage,
 });
 

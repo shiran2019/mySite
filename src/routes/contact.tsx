@@ -2,23 +2,48 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
 import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
 import { LinkedInIcon } from "@/components/Footer";
+import { generateMetaTags, generateBreadcrumbSchema } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact — Shiran Suriyapathiraja" },
-      {
-        name: "description",
-        content:
-          "Get in touch with Shiran Suriyapathiraja for software engineering, fintech, and AI collaborations.",
-      },
-      { property: "og:title", content: "Contact — Shiran Suriyapathiraja" },
-      {
-        property: "og:description",
-        content: "Email, phone, LinkedIn — let's build something together.",
-      },
-    ],
-  }),
+  head: () => {
+    const breadcrumbs = generateBreadcrumbSchema([
+      { name: "Home", url: "https://shiran.dev" },
+      { name: "Contact", url: "https://shiran.dev/contact" },
+    ]);
+
+    return {
+      meta: [
+        ...generateMetaTags({
+          title:
+            "Contact Shiran Suriyapathiraja — Software Engineer & Fintech Specialist",
+          description:
+            "Get in touch with Shiran Suriyapathiraja for software engineering consulting, fintech development, and AI research collaborations. Available for opportunities.",
+          keywords: [
+            "Contact",
+            "Software Engineer",
+            "Fintech Consultant",
+            "AI Researcher",
+            "Shiran Suriyapathiraja",
+            "Collaboration",
+            "Hiring",
+          ],
+          ogTitle: "Contact — Let's Build Something Together",
+          ogDescription:
+            "Reach out to discuss software engineering projects, fintech solutions, or AI research collaborations.",
+        }),
+      ],
+      links: [
+        { rel: "canonical", href: "https://shiran.dev/contact" },
+        { rel: "alternate", hrefLang: "en", href: "https://shiran.dev/contact" },
+      ],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(breadcrumbs),
+        },
+      ],
+    };
+  },
   component: ContactPage,
 });
 

@@ -2,23 +2,41 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import heroPortrait from "@/assets/hero-portrait.jpg";
+import { generateMetaTags, SEO_KEYWORDS, getCombinedKeywords, generateBreadcrumbSchema } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Shiran Suriyapathiraja — Software Engineer & AI Researcher" },
-      {
-        name: "description",
-        content:
-          "Software Engineer with 2.5+ years of fintech experience, building scalable systems and applying AI to real-world problems.",
-      },
-      { property: "og:title", content: "Shiran Suriyapathiraja — Software Engineer" },
-      {
-        property: "og:description",
-        content: "Full-stack engineer, fintech specialist, IEEE-published AI researcher.",
-      },
-    ],
-  }),
+  head: () => {
+    const keywords = getCombinedKeywords(["softwareEngineering", "fintech", "ai", "author"]);
+    const breadcrumbs = generateBreadcrumbSchema([
+      { name: "Home", url: "https://shiran.dev" },
+    ]);
+
+    return {
+      meta: [
+        ...generateMetaTags({
+          title:
+            "Shiran Suriyapathiraja — Software Engineer, Fintech Specialist & AI Researcher",
+          description:
+            "Experienced Software Engineer with 2.5+ years building fintech systems, scalable backends, and AI-driven solutions. 40+ production projects. IEEE published author.",
+          keywords: keywords,
+          ogTitle:
+            "Shiran Suriyapathiraja — Full-Stack Engineer & Fintech Systems Architect",
+          ogDescription:
+            "Building secure, scalable fintech systems and AI applications. 36+ active production branches. Spring Boot • React • Python • Generative AI",
+        }),
+      ],
+      links: [
+        { rel: "canonical", href: "https://shiran.dev/" },
+        { rel: "alternate", hrefLang: "en", href: "https://shiran.dev/" },
+      ],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify(breadcrumbs),
+        },
+      ],
+    };
+  },
   component: Index,
 });
 
