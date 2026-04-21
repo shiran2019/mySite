@@ -11,7 +11,7 @@ export default defineConfig({
     react(),
     tsConfigPaths(),
   ],
-  base: '/mySite',
+  base: '/',
   build: {
     target: 'es2020',
     outDir: 'dist',
