@@ -41,10 +41,9 @@ export const Route = createFileRoute("/")({
 });
 
 const stats = [
-  { value: "2.5+", label: "Years experience" },
-  { value: "36+", label: "Production branches" },
-  { value: "2", label: "IEEE publications" },
-  { value: "40+", label: "Real-world projects" },
+  { value: "2.5+", label: "Years of Industry Experience" },
+  { value: "30+", label: "Real-world Projects" },
+  { value: "2 ", label: "IEEE Research publications" },
 ];
 
 const stack = [
@@ -96,9 +95,7 @@ function Index() {
               transition={{ duration: 0.7, delay: 0.3 }}
               className="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed"
             >
-              I'm <span className="text-foreground font-medium">Shiran Suriyapathiraja</span>, a
-              Software Engineer at ZData Innovations. I design scalable banking systems, ship
-              hotfixes across 36+ branches, and publish AI research at IEEE conferences.
+              I'm <span className="text-foreground font-medium">Shiran Suriyapathiraja</span>, a Software Engineer and IT graduate from the University of Kelaniya, specializing in full-stack development and DevOps. With 2.5+ years of industry experience, I design scalable systems, build secure solutions, and apply Generative AI to real-world problems. I'm passionate about continuous learning and have contributed research to IEEE conferences.
             </motion.p>
 
             <motion.div
@@ -152,7 +149,7 @@ function Index() {
 
       {/* STATS */}
       <section className="px-6">
-        <div className="mx-auto max-w-6xl grid grid-cols-2 md:grid-cols-4 gap-px bg-border rounded-2xl overflow-hidden border border-border">
+        <div className="mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-px bg-border rounded-2xl overflow-hidden border border-border">
           {stats.map((s, i) => (
             <motion.div
               key={s.label}

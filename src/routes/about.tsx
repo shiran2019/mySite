@@ -41,7 +41,7 @@ export const Route = createFileRoute("/about")({
 
 const competences: Record<string, string[]> = {
   Languages: ["JavaScript", "Java", "Python", "C++"],
-  Frontend: ["React.js", "MUI", "Bootstrap", "Zustand", "Redux", "HTML5", "CSS3"],
+  Frontend: ["React JS/TS", "MUI", "Bootstrap", "Zustand", "Redux", "HTML5", "CSS3"],
   Backend: ["Spring Boot", "Node.js", "REST", "GraphQL"],
   Data: ["MySQL", "MongoDB", "Redis", "Liquibase"],
   DevOps: ["Docker", "Jenkins", "GitHub"],

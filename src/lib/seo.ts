@@ -31,8 +31,8 @@ export function generatePersonSchema(name: string, title: string, description: s
     url: "https://shiran.dev",
     sameAs: [
       "https://linkedin.com/in/shiran-suriyapathiraja",
-      "https://github.com/shiran",
-      "https://twitter.com/shiran",
+      "https://github.com/shiran2019",
+      "https://twitter.com/shiran2019",
     ],
     knowsAbout: [
       "Software Engineering",

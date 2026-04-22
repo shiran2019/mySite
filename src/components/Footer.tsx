@@ -41,7 +41,7 @@ export function Footer() {
             <Mail className="size-4" />
           </a>
           <a
-            href="https://github.com"
+            href="https://github.com/shiran2019"
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub"
