@@ -138,8 +138,7 @@ export const SEO_STRATEGY = {
       ],
       secondary: [
         "2.5+ years experience",
-        "40+ projects",
-        "36+ production branches",
+        "30+ projects",
         "IEEE publications",
       ],
       focus: "Brand positioning and overall portfolio presentation",

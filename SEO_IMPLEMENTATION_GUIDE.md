@@ -42,7 +42,7 @@ Centralized SEO utility containing:
 
 #### Homepage (`index.tsx`)
 - **Focus Keywords**: Software Engineer, Fintech Developer, AI Researcher, Full-Stack Engineer
-- **Meta Description**: Emphasizes 2.5+ years fintech experience and 40+ projects
+- **Meta Description**: Emphasizes 2.5+ years fintech experience and 30+ projects
 - **Breadcrumb Schema**: For enhanced search result display
 - **Keywords Target**:
   - Senior Engineer, Fintech Specialist, AI Researcher

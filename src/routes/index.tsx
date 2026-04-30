@@ -17,7 +17,7 @@ export const Route = createFileRoute("/")({
           title:
             "Shiran Suriyapathiraja — Software Engineer, Fintech Specialist & AI Researcher",
           description:
-            "Experienced Software Engineer with 2.5+ years building fintech systems, scalable backends, and AI-driven solutions. 40+ production projects. IEEE published author.",
+            "Experienced Software Engineer with 2.5+ years building fintech systems, scalable backends, and AI-driven solutions. 30+ production projects. IEEE published author.",
           keywords: keywords,
           ogTitle:
             "Shiran Suriyapathiraja — Full-Stack Engineer & Fintech Systems Architect",

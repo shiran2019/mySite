@@ -282,7 +282,7 @@ Your portfolio now targets 4 key user intents:
 - Not just "Software Engineer" but "Fintech Specialist + AI Researcher"
 
 ✨ **Credibility Signals**
-- IEEE publications, 2.5+ years experience, 40+ projects
+- IEEE publications, 2.5+ years experience, 30+ projects
 
 ✨ **Technical Authority**
 - Specific technologies, architecture expertise, production scale
